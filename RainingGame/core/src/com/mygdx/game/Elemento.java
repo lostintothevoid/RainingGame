@@ -11,6 +11,5 @@ public interface Elemento {
 	
 	public void dibujar(SpriteBatch batch);
 	
-	public void dispose();//chupe chupe
-	
+	public void dispose();
 }
