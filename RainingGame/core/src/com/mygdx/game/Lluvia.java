@@ -33,11 +33,11 @@ public class Lluvia {
 	    	GotaAzul raindrop = new GotaAzul();
 	    	elementos.add(raindrop);
 	    }
-	    if(probabilidad == 0) {
+	    if(probabilidad > 7) {
 	    	GotaRoja raindrop = new GotaRoja();
 	    	elementos.add(raindrop);
 	    }	
-		if (probabilidad == 0) {
+		if (probabilidad == 6) {
 			Meteorito met = new Meteorito(); 
 			elementos.add(met);
 		}
