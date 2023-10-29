@@ -55,7 +55,7 @@ public class GameScreen implements Screen {
 		font.draw(batch, "Vidas : " + tarro.getVidas(), 670, 475);
 		font.draw(batch, "HighScore : " + game.getHigherScore(), camera.viewportWidth/2-50, 475);
 		
-	    if(!tarro.actualizarMovimiento()) {
+	    if(!tarro.movimiento()) {
 	    	if (!lluvia.actualizarMovimiento(tarro)) {
 		    	  //actualizar HigherScore
 		    	if (game.getHigherScore() < tarro.getPuntos()) {

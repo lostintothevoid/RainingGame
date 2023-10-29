@@ -11,13 +11,8 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 
 public class Lluvia {
-	//private Array<Rectangle> rainDropsPos;
-	//private Array<Integer> rainDropsType;
     private Array <Elemento> elementos;
 	private long lastDropTime;
-    //private Texture gotaBuena;
-    //private Texture gotaMala;
-    //private Sound dropSound;
     private Music rainMusic;
 	   
     public Lluvia() {
@@ -38,11 +33,11 @@ public class Lluvia {
 	    	GotaAzul raindrop = new GotaAzul();
 	    	elementos.add(raindrop);
 	    }
-	    if(probabilidad > 7) {
+	    if(probabilidad == 0) {
 	    	GotaRoja raindrop = new GotaRoja();
 	    	elementos.add(raindrop);
 	    }	
-		if (probabilidad == 6) {
+		if (probabilidad == 0) {
 			Meteorito met = new Meteorito(); 
 			elementos.add(met);
 		}
@@ -78,7 +73,7 @@ public class Lluvia {
    public void actualizarDibujoLluvia(SpriteBatch batch) { 
 	   
 	  for (int i=0; i < elementos.size; i++ ) {		  
-	      Elemento elem = elementos.get(i);
+		  Dibujable elem = elementos.get(i);
 	      elem.dibujar(batch);
 	   }
    }

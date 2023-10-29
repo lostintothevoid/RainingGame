@@ -8,24 +8,17 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 
-public class Meteorito implements Elemento {
-	private Rectangle hitRock;
-	protected Texture rocaDibujo;
-	protected Sound rocaSonido;
+public class Meteorito extends Elemento{
 	private float velocidadX;
 	private float velocidadY;
 	private int direccion;
 
 public Meteorito() {
-	hitRock = new Rectangle();
-	hitRock.x = MathUtils.random(0, 800-64);
-	hitRock.y = 480;
-	hitRock.width = 64;
-	hitRock.height = 64;
+	super();
     velocidadX = 300 * Gdx.graphics.getDeltaTime();
     velocidadY = 300 * Gdx.graphics.getDeltaTime();
-    rocaDibujo = new Texture(Gdx.files.internal("meteorito.png"));
-    rocaSonido = Gdx.audio.newSound(Gdx.files.internal("kbooooom.mp3"));
+    dibujo = new Texture(Gdx.files.internal("meteorito.png"));
+    sonido = Gdx.audio.newSound(Gdx.files.internal("kbooooom.mp3"));
     
     Random random = new Random();
     boolean esUno = random.nextBoolean();
@@ -38,9 +31,8 @@ public Meteorito() {
 }
 
 	public boolean choca(Tarro tarro) {
-		if(hitRock.overlaps(tarro.getArea())) {
-			rocaSonido.play();
-			tarro.explosion();
+		if(hitbox.overlaps(tarro.getArea())) {
+			efecto(tarro);
 			return true;
 		}
 		else {
@@ -48,17 +40,21 @@ public Meteorito() {
 		}
 	}
 	
+	protected void efecto(Tarro tarro) {
+		sonido.play();
+		tarro.explosion();
+	}
+	
 	public boolean movimiento() {
 		
-		setY(hitRock.y - getVelocidadY());
-		setX(hitRock.x - getVelocidadX()*direccion);
+		setY(hitbox.y - getVelocidadY());
+		setX(hitbox.x - getVelocidadX()*direccion);
 		if(getY() + 64 < 0) {
 	  	  return false;
 	    }
 		else {
 			return true;
 		}
-		
 	}
 	
 	public float getVelocidadY() {
@@ -70,42 +66,4 @@ public Meteorito() {
 		return velocidadX;
 	}
 	
-	public float getY() {
-		return hitRock.y;
-	}
-	public void setY(float actualizar) {
-		hitRock.y = actualizar;
-	}
-	
-	public float getX() {
-		return hitRock.x;
-	}
-	public void setX(float actualizar) {
-		hitRock.x = actualizar;
-	}
-	
-	public Rectangle getRectangle() {
-		return hitRock;
-	}
-	
-	public void dispose() {
-		rocaSonido.dispose();
-	}
-	
-	
-	public Sound getSound() {
-		return rocaSonido;
-	}
-	
-	public Texture getTextura() {
-		return rocaDibujo;
-	}
-	
-	public void dibujar(SpriteBatch batch) {
-		batch.draw(getTextura(), getX(), getY());
-	}
-
-
-
-
 }

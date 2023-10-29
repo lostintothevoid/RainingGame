@@ -9,10 +9,9 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 
 
-public class Tarro {
+public class Tarro implements Dibujable{
 	   private Rectangle bucket;
 	   private Texture bucketImage;
-	  // private Sound sonidoHerido;
 	   private int vidas = 3;
 	   private int puntos = 0;
 	   private int velx = 400;
@@ -65,7 +64,7 @@ public class Tarro {
 	   } 
 	   
 	   
-	   public boolean actualizarMovimiento() { 
+	   public boolean movimiento() { 
 		   //movimiento desde teclado
 		   if(!estaHerido()) {
 			   if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) actualizarPosicion("Izquierda");
