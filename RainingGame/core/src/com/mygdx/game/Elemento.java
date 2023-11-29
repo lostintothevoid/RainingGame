@@ -9,9 +9,9 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 
 public abstract class Elemento implements Dibujable{
-	protected Rectangle hitbox;
-	protected Sound sonido;
-	protected Texture dibujo;
+	private Rectangle hitbox;
+	private Sound sonido;
+	private Texture dibujo;
 	
 	public Elemento() {
 		hitbox = new Rectangle();
