@@ -16,7 +16,7 @@ public abstract class Gota extends Elemento{
 	}
 
 	public boolean choca(Tarro tarro) {
-		if(hitbox.overlaps(tarro.getArea())) {
+		if(getHitbox().overlaps(tarro.getArea())) {
 			efecto(tarro);
 			return true;
 		}
@@ -26,7 +26,7 @@ public abstract class Gota extends Elemento{
 	}
 	
 	public boolean movimiento() {
-		setY(hitbox.y - getVelocidad());
+		setY(getHitbox().y - getVelocidad());
 		if(getY() + 64 < 0) {
 	  	  return false;
 	    }

@@ -17,8 +17,8 @@ public Meteorito() {
 	super();
     velocidadX = 300 * Gdx.graphics.getDeltaTime();
     velocidadY = 300 * Gdx.graphics.getDeltaTime();
-    dibujo = new Texture(Gdx.files.internal("meteorito.png"));
-    sonido = Gdx.audio.newSound(Gdx.files.internal("kbooooom.mp3"));
+    setTextura(new Texture(Gdx.files.internal("meteorito.png")));
+    setSound(Gdx.audio.newSound(Gdx.files.internal("kbooooom.mp3")));
     
     Random random = new Random();
     boolean esUno = random.nextBoolean();
@@ -31,7 +31,7 @@ public Meteorito() {
 }
 
 	public boolean choca(Tarro tarro) {
-		if(hitbox.overlaps(tarro.getArea())) {
+		if(getHitbox().overlaps(tarro.getArea())) {
 			efecto(tarro);
 			return true;
 		}
@@ -41,14 +41,14 @@ public Meteorito() {
 	}
 	
 	protected void efecto(Tarro tarro) {
-		sonido.play();
+		getSound().play();
 		tarro.explosion();
 	}
 	
 	public boolean movimiento() {
 		
-		setY(hitbox.y - getVelocidadY());
-		setX(hitbox.x - getVelocidadX()*direccion);
+		setY(getHitbox().y - getVelocidadY());
+		setX(getHitbox().x - getVelocidadX()*direccion);
 		if(getY() + 64 < 0) {
 	  	  return false;
 	    }

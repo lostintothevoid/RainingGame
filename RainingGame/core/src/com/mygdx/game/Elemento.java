@@ -45,7 +45,7 @@ public abstract class Elemento implements Dibujable{
 		hitbox.x = actualizar;
 	}
 	
-	public Rectangle getRectangle() {
+	protected Rectangle getHitbox() {
 		return hitbox;
 	}
 
@@ -57,8 +57,16 @@ public abstract class Elemento implements Dibujable{
 		return sonido;
 	}
 	
+	protected void setSound(Sound sonido){
+		this.sonido = sonido;
+	}
+	
 	public Texture getTextura() {
 		return dibujo;
+	}
+	
+	protected void setTextura(Texture dibujo) {
+		this.dibujo = dibujo;
 	}
 }
 

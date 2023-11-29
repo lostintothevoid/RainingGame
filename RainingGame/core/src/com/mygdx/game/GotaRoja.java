@@ -8,8 +8,8 @@ public class GotaRoja extends Gota{
 	
 	public GotaRoja() {
 		super();
-		dibujo = new Texture(Gdx.files.internal("gotaRoja.png"));
-		sonido = Gdx.audio.newSound(Gdx.files.internal("hurt.ogg"));
+		setTextura(new Texture(Gdx.files.internal("gotaRoja.png")));
+		setSound(Gdx.audio.newSound(Gdx.files.internal("hurt.ogg")));
 	}
 	
 	@Override
