@@ -29,7 +29,7 @@ public Meteorito() {
     	direccion = -1;
     }
 }
-
+//Choca tarro
 	public boolean choca(Tarro tarro) {
 		if(getHitbox().overlaps(tarro.getArea())) {
 			efecto(tarro);
@@ -38,11 +38,6 @@ public Meteorito() {
 		else {
 			return false;
 		}
-	}
-	
-	protected void efecto(Tarro tarro) {
-		getSound().play();
-		tarro.explosion();
 	}
 	
 	public boolean movimiento() {
@@ -55,6 +50,11 @@ public Meteorito() {
 		else {
 			return true;
 		}
+	}
+	
+	protected void efecto(Tarro tarro) {
+		getSound().play();
+		tarro.explosion();
 	}
 	
 	public float getVelocidadY() {
