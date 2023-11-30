@@ -3,15 +3,24 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
-
-public class GotaAzul extends Gota{
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Rectangle;public class GotaAzul extends Gota{
 	
 	
-	public GotaAzul() {
-		super();
-		setTextura(new Texture(Gdx.files.internal("gotaAzul.png")));
-		setSound(Gdx.audio.newSound(Gdx.files.internal("drop.wav")));		
+	public GotaAzul(Rectangle hitbox, Sound sonido, Texture dibujo, float velocidadX, float velocidadY) {
+		super(hitbox, sonido, dibujo, velocidadX, velocidadY);
+		
+		//setTextura(new Texture(Gdx.files.internal("gotaAzul.png")));
+		//setSound(Gdx.audio.newSound(Gdx.files.internal("drop.wav")));		
 	}
+	
 	
 	
 	protected void efecto(Tarro tarro) {

@@ -9,18 +9,13 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Meteorito extends Elemento{
-	private float velocidadX;
-	private float velocidadY;
+
 	private int direccion;
 
-public Meteorito() {
-	super();
-    velocidadX = 300 * Gdx.graphics.getDeltaTime();
-    velocidadY = 300 * Gdx.graphics.getDeltaTime();
-    setTextura(new Texture(Gdx.files.internal("meteorito.png")));
-    setSound(Gdx.audio.newSound(Gdx.files.internal("kbooooom.mp3")));
+public Meteorito(Rectangle hitbox, Sound sonido, Texture dibujo, float velocidadX, float velocidadY) {
+	super(hitbox, sonido, dibujo, velocidadX, velocidadY);    
     
-    Random random = new Random();
+	Random random = new Random();
     boolean esUno = random.nextBoolean();
     if(esUno) {
     	direccion = 1;
@@ -58,12 +53,12 @@ public Meteorito() {
 	}
 	
 	public float getVelocidadY() {
-		velocidadY = 400 * Gdx.graphics.getDeltaTime();
-		return velocidadY;
+		setVelocidadY(400 * Gdx.graphics.getDeltaTime());
+		return getVelocidadY();
 	}
 	public float getVelocidadX() {
-		velocidadX = 50 * Gdx.graphics.getDeltaTime();
-		return velocidadX;
+		setVelocidadX(50 * Gdx.graphics.getDeltaTime());
+		return getVelocidadX();
 	}
 	
 }

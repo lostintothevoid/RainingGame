@@ -12,13 +12,15 @@ public abstract class Elemento implements Dibujable{
 	private Rectangle hitbox;
 	private Sound sonido;
 	private Texture dibujo;
+	private float velocidadX;
+	private float velocidadY;
 	
-	public Elemento() {
-		hitbox = new Rectangle();
-		hitbox.x = MathUtils.random(0, 800-64);
-		hitbox.y = 480;
-		hitbox.width = 64;
-		hitbox.height = 64;
+	public Elemento(Rectangle hitbox, Sound sonido, Texture dibujo, float velocidadX, float velocidadY) {
+		this.hitbox = hitbox;
+		this.sonido = sonido;
+		this.dibujo = dibujo;
+		this.velocidadX = velocidadX;
+		this.velocidadY = velocidadY;
 	}
 	
 	public abstract boolean choca(Tarro tarro);
@@ -67,6 +69,22 @@ public abstract class Elemento implements Dibujable{
 	
 	protected void setTextura(Texture dibujo) {
 		this.dibujo = dibujo;
+	}
+	
+	protected void setVelocidadY(float velocidadY) {
+		this.velocidadY = velocidadY;
+	}
+	
+	protected float getVelocidadY() {
+		return velocidadY;
+	}
+	
+	protected void setVelocidadX(float velocidadY) {
+		this.velocidadY = velocidadY;
+	}
+	
+	protected float getVelocidadX() {
+		return velocidadY;
 	}
 }
 

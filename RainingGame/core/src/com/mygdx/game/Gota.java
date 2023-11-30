@@ -6,13 +6,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
-
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Rectangle;
 public abstract class Gota extends Elemento{
-	private float velocidad;
 
-	public Gota() {
-		super();
-		velocidad = 300 * Gdx.graphics.getDeltaTime();
+	public Gota(Rectangle hitbox, Sound sonido, Texture dibujo, float velocidadX, float velocidadY) {
+		super(hitbox, sonido, dibujo, velocidadX, velocidadY);
+
 	}
 
 	public boolean choca(Tarro tarro) {
@@ -36,8 +37,8 @@ public abstract class Gota extends Elemento{
 	}
 	
 	public float getVelocidad() {
-		velocidad = 300 * Gdx.graphics.getDeltaTime();
-		return velocidad;
+		setVelocidadY(300 * Gdx.graphics.getDeltaTime());
+		return getVelocidadY();
 	}
 	
 	
