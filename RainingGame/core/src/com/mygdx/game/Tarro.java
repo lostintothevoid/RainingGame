@@ -22,6 +22,11 @@ public class Tarro implements Dibujable{
 	   
 	   public Tarro() {
 		   bucketImage = new Texture(Gdx.files.internal("bucket.png"));
+		   bucket = new Rectangle();
+		   bucket.x = 800 / 2 - 64 / 2;
+		   bucket.y = 20;
+		   bucket.width = 64;
+		   bucket.height = 64;
 	   }
 	   
 		public int getVidas() {
@@ -38,14 +43,6 @@ public class Tarro implements Dibujable{
 			puntos+=pp;
 		}
 		
-	
-	   public void crear() {
-		      bucket = new Rectangle();
-		      bucket.x = 800 / 2 - 64 / 2;
-		      bucket.y = 20;
-		      bucket.width = 64;
-		      bucket.height = 64;
-	   }
 	   
 	   public void dañar() {
 		  vidas--;

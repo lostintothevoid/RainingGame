@@ -15,9 +15,9 @@ public class GameScreen implements Screen {
     private OrthographicCamera camera;
 	private SpriteBatch batch;	   
 	private BitmapFont font;
-	private Tarro tarro;
+	//private Tarro tarro;
 	private Lluvia lluvia;
-
+	private Singleton singleton;
 	   
 	//boolean activo = true;
 
@@ -26,9 +26,9 @@ public class GameScreen implements Screen {
         this.batch = game.getBatch();
         this.font = game.getFont();
 		  
-          tarro = new Tarro();
-          // creacion del tarro
-	      tarro.crear();   
+     // creacion del tarro
+          singleton = Singleton.getInstance(new Tarro());  
+           
 	     
 	      lluvia = new Lluvia();
 	      // creacion de la lluvia
@@ -51,25 +51,25 @@ public class GameScreen implements Screen {
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		//dibujar textos
-		font.draw(batch, "Gotas totales: " + tarro.getPuntos(), 5, 475);
-		font.draw(batch, "Vidas : " + tarro.getVidas(), 670, 475);
+		font.draw(batch, "Gotas totales: " + singleton.getValue().getPuntos(), 5, 475);
+		font.draw(batch, "Vidas : " + singleton.getValue().getVidas(), 670, 475);
 		font.draw(batch, "HighScore : " + game.getHigherScore(), camera.viewportWidth/2-50, 475);
 		
-	    if(!tarro.movimiento()) {
-	    	if (!lluvia.actualizarMovimiento(tarro)) {
+	    if(!singleton.getValue().movimiento()) {
+	    	if (!lluvia.actualizarMovimiento(singleton.getValue())) {
 		    	  //actualizar HigherScore
-		    	if (game.getHigherScore() < tarro.getPuntos()) {
-		    		game.setHigherScore(tarro.getPuntos());  
+		    	if (game.getHigherScore() < singleton.getValue().getPuntos()) {
+		    		game.setHigherScore(singleton.getValue().getPuntos());  
 		    	}
 		    	//ir a la ventana de finde juego y destruir la actual
-		    	if(!tarro.estaHerido()) {
+		    	if(!singleton.getValue().estaHerido()) {
 		    		game.setScreen(new GameOverScreen(game));
 		    	  	dispose();
 		    	}
 		    }
 	    }
 	    // Se dibuja el tarro y la lluvia
-		tarro.dibujar(batch);
+	    singleton.getValue().dibujar(batch);
 		lluvia.actualizarDibujoLluvia(batch);
 		
 		batch.end();
@@ -103,7 +103,7 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void dispose() {
-      tarro.destruir();
+	  singleton.getValue().destruir();
       lluvia.destruir();
 
 	}
