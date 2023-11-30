@@ -13,7 +13,7 @@ public class GotaBuilder implements BuilderInterfaz {
 	private float velocidad;
 	
 
-public GotaBuilder(int tipoGota) {
+public void tipoGota(int tipoGota) {
 	this.tipoGota = tipoGota;
 }
 	
@@ -21,19 +21,19 @@ public void Hitbox(Rectangle hitbox) {
 	this.hitbox = hitbox;
 }
 
-public GotaBuilder(Sound sonido) {
+public void Sonido(Sound sonido) {
 	this.sonido = sonido;
 }
 
-public GotaBuilder(Texture dibujo) {
+public void Dibujo(Texture dibujo) {
 	this.dibujo = dibujo;
 }
 
-public GotaBuilder(float velocidad) {
+public void Velocidad(float velocidad) {
 	this.velocidad = velocidad;
 }
 
-public Gota() {
+public Gota Gota() {
 	if(tipoGota == 1) {
 		return new GotaAzul(hitbox, sonido, dibujo, velocidad);
 	}
