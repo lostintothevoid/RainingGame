@@ -14,6 +14,7 @@ public class Lluvia {
     private Array <Elemento> elementos;
 	private long lastDropTime;
     private Music rainMusic;
+    private StrategyProbabilidades probabilidades;
 	   
     public Lluvia() {
 		rainMusic = Gdx.audio.newMusic(Gdx.files.internal("rain.mp3"));
@@ -28,37 +29,25 @@ public class Lluvia {
 	
 	private void crearElemento() {
 	    int probabilidad = MathUtils.random(1,10);  
-		
-	    DirectorElemento director = new DirectorElemento();
-	    ElementoBuilder builder = new ElementoBuilder();
-	    
+
 	    if (probabilidad < 5) {	 	  
-	    	director.buildGotaAzul(builder);
-	    	
-	    	GotaAzul raindrop = (GotaAzul) builder.Elemento();
-	    	elementos.add(raindrop);
+	    	probabilidades = new ProbabilidadGotaAzul();
 	    }
 	    if(probabilidad > 7) {
-	    	director.buildGotaRoja(builder);
-	    	
-	    	GotaRoja raindrop = (GotaRoja) builder.Elemento();
-	    	elementos.add(raindrop);
+	    	probabilidades = new ProbabilidadGotaRoja();
 	    }	
 		if (probabilidad == 6) {
-			director.buildMeteorito(builder);
-	    	
-			Meteorito met = (Meteorito) builder.Elemento();
-			elementos.add(met);
+			probabilidades = new ProbabilidadMeteorito();
 		}
-	      
-	      lastDropTime = TimeUtils.nanoTime();
+		elementos.add(probabilidades.crear());
+		
+		lastDropTime = TimeUtils.nanoTime();
 	   }
 	
    public boolean actualizarMovimiento(Tarro tarro) {
 	   // generar gotas de lluvia 
 	   if(TimeUtils.nanoTime() - lastDropTime > 100000000) crearElemento();
 	  
-	   
 	   // revisar si las gotas cayeron al suelo o chocaron con el tarro
 	   for (int i=0; i < elementos.size; i++ ) {
 		  Elemento elem = elementos.get(i);
