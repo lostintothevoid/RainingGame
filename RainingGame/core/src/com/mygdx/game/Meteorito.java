@@ -37,8 +37,8 @@ public Meteorito(Rectangle hitbox, Sound sonido, Texture dibujo, float velocidad
 	
 	public boolean movimiento() {
 		
-		setY(getHitbox().y - getVelocidadY());
-		setX(getHitbox().x - getVelocidadX()*direccion);
+		setY(getHitbox().y - getVelocidadYMete());
+		setX(getHitbox().x - getVelocidadXMete()*direccion);
 		if(getY() + 64 < 0) {
 	  	  return false;
 	    }
@@ -52,11 +52,11 @@ public Meteorito(Rectangle hitbox, Sound sonido, Texture dibujo, float velocidad
 		tarro.explosion();
 	}
 	
-	public float getVelocidadY() {
+	public float getVelocidadYMete() {
 		setVelocidadY(400 * Gdx.graphics.getDeltaTime());
 		return getVelocidadY();
 	}
-	public float getVelocidadX() {
+	public float getVelocidadXMete() {
 		setVelocidadX(50 * Gdx.graphics.getDeltaTime());
 		return getVelocidadX();
 	}

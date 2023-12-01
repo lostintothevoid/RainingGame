@@ -16,9 +16,7 @@ import com.badlogic.gdx.math.Rectangle;public class GotaAzul extends Gota{
 	
 	public GotaAzul(Rectangle hitbox, Sound sonido, Texture dibujo, float velocidadX, float velocidadY) {
 		super(hitbox, sonido, dibujo, velocidadX, velocidadY);
-		
-		//setTextura(new Texture(Gdx.files.internal("gotaAzul.png")));
-		//setSound(Gdx.audio.newSound(Gdx.files.internal("drop.wav")));		
+			
 	}
 	
 	

@@ -27,7 +27,7 @@ public class DirectorElemento {
 	}
 	
 	public void buildMeteorito(ElementoBuilder builder) {
-		builder.tipoElemento(0);
+		builder.tipoElemento(2);
 		builder.Hitbox(crearHitbox());
 		builder.Dibujo(new Texture(Gdx.files.internal("meteorito.png")));
 		builder.Sonido(Gdx.audio.newSound(Gdx.files.internal("kbooooom.mp3")));

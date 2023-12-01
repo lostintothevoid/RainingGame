@@ -29,16 +29,25 @@ public class Lluvia {
 	private void crearElemento() {
 	    int probabilidad = MathUtils.random(1,10);  
 		
+	    DirectorElemento director = new DirectorElemento();
+	    ElementoBuilder builder = new ElementoBuilder();
+	    
 	    if (probabilidad < 5) {	 	  
-	    	GotaAzul raindrop = new GotaAzul();
+	    	director.buildGotaAzul(builder);
+	    	
+	    	GotaAzul raindrop = (GotaAzul) builder.Elemento();
 	    	elementos.add(raindrop);
 	    }
 	    if(probabilidad > 7) {
-	    	GotaRoja raindrop = new GotaRoja();
+	    	director.buildGotaRoja(builder);
+	    	
+	    	GotaRoja raindrop = (GotaRoja) builder.Elemento();
 	    	elementos.add(raindrop);
 	    }	
 		if (probabilidad == 6) {
-			Meteorito met = new Meteorito(); 
+			director.buildMeteorito(builder);
+	    	
+			Meteorito met = (Meteorito) builder.Elemento();
 			elementos.add(met);
 		}
 	      

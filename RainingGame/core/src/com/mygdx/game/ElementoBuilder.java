@@ -39,17 +39,21 @@ public class ElementoBuilder implements BuilderInterfaz {
 	
 	public Elemento Elemento() {
 		
+		Elemento elem;
+		
 		if(tipoElemento == 0) {
-			return new GotaAzul(hitbox, sonido, dibujo, velocidadX, velocidadY);
+			elem = new GotaAzul(hitbox, sonido, dibujo, velocidadX, velocidadY);
+		}
+		else {
+			if(tipoElemento == 1) {
+				elem = new GotaRoja(hitbox, sonido, dibujo, velocidadX, velocidadY);
+			}
+			else {
+				elem = new Meteorito(hitbox, sonido, dibujo, velocidadX, velocidadY);
+			}
 		}
 		
-		if(tipoElemento == 1) {
-			return new GotaRoja(hitbox, sonido, dibujo, velocidadX, velocidadY);
-		}
-		
-		if(tipoElemento == 2) {
-			return new Meteorito(hitbox, sonido, dibujo, velocidadX, velocidadY);
-		}
+		return elem;
 	}
 
 }
