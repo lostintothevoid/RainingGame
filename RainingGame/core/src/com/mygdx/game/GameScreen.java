@@ -28,7 +28,7 @@ public class GameScreen implements Screen {
 		  
      // creacion del tarro
           singleton = Singleton.getInstance(new Tarro());  
-           
+          singleton.getValue().revivir();
 	     
 	      lluvia = new Lluvia();
 	      // creacion de la lluvia

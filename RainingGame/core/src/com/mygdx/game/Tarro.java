@@ -43,6 +43,12 @@ public class Tarro implements Dibujable{
 			puntos+=pp;
 		}
 		
+		public void revivir() {
+			vidas = 3;
+			puntos = 0;
+			herido = false;
+			bucketImage = new Texture(Gdx.files.internal("bucket.png"));
+		}
 	   
 	   public void dañar() {
 		  vidas--;

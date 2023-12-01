@@ -79,12 +79,12 @@ public abstract class Elemento implements Dibujable{
 		return velocidadY;
 	}
 	
-	protected void setVelocidadX(float velocidadY) {
-		this.velocidadY = velocidadY;
+	protected void setVelocidadX(float velocidadX) {
+		this.velocidadX = velocidadX;
 	}
 	
 	protected float getVelocidadX() {
-		return velocidadY;
+		return velocidadX;
 	}
 }
 
