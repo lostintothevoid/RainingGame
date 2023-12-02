@@ -30,10 +30,10 @@ public class Lluvia {
 	private void crearElemento() {
 	    int probabilidad = MathUtils.random(1,10);  
 
-	    if (probabilidad < 5) {	 	  
+	    if (probabilidad < 6) {	 	  
 	    	probabilidades = new ProbabilidadGotaAzul();
 	    }
-	    if(probabilidad > 7) {
+	    if(probabilidad > 6) {
 	    	probabilidades = new ProbabilidadGotaRoja();
 	    }	
 		if (probabilidad == 6) {
